@@ -1,0 +1,32 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
+ */
+class ArticleFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'title' => $this->faker->sentence,
+            'content' => $this->faker->paragraph,
+            'slug' => $this->faker->slug,
+            'image' => $this->faker->imageUrl,
+            'is_published' => $this->faker->boolean,
+            'published_at' => $this->faker->dateTime,
+            'category_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => $this->faker->numberBetween(1, 10),
+
+
+        ];
+    }
+}

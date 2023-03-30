@@ -22,6 +22,16 @@
             <x-icons.dashboard class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
+
+    <x-sidebar.link
+        title="Article"
+        href="{{ route('article') }}"
+        :isActive="request()->routeIs('article')"
+    >
+        <x-slot name="icon">
+            <x-icons.dashboard class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
     <x-sidebar.dropdown
         title="Buttons"
         :active="Str::startsWith(request()->route()->uri(), 'buttons')"

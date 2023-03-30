@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('category', CategoryController::class)->name('index', 'category');
+    Route::resource('article', ArticleController::class)->name('index', 'article');
 });
 
 // useless routes

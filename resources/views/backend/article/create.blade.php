@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
    
-    </x-slot>
-
     <header>
         <h2 class="text-lg font-medium">
             {{ __('Create Article') }}
@@ -10,13 +8,19 @@
 
    
     </header>
-  <form
+
+    </x-slot>
+
+            
+    <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1 ">
+    <form
         method="post"
         action="{{ route('article.store') }}"
         class="mt-6 space-y-6"
+        enctype="multipart/form-data"
     >
         @csrf
-        @method('POST')
+        <!-- @method('POST') -->
 
         <div class="space-y-2">
             <x-form.label
@@ -40,49 +44,58 @@
 
         <div class="space-y-2">
             <x-form.label
-                for="email"
+                for="content"
                 :value="__('content')"
             />
 
             <x-form.input
-                id="email"
+                id="content"
                 name="content"
                 type="text"
                 class="block w-full"
              
                 required
-                autocomplete="email"
+                autocomplete="content"
             />
 
-            <x-form.error :messages="$errors->get('email')" />
+            <x-form.error :messages="$errors->get('content')" />
 
         </div>
         <div class="space-y-2">
             <x-form.label
-                for="email"
+                for="slug"
                 :value="__('slug')"
             />
 
             <x-form.input
-                id="email"
+                id="slug"
                 name="slug"
                 type="text"
                 class="block w-full"
              
                 required
-                autocomplete="email"
+                autocomplete="slug"
             />
 
-            <x-form.error :messages="$errors->get('email')" />
+            <x-form.error :messages="$errors->get('slug')" />
 
         </div>
         <div class="space-y-2">
         <x-form.label
                 for="email"
-                :value="__('Image')"
+                :value="__('image')"
             />
 
-            <input type="file" name="image" >
+            
+            <div class="center">
+                <div class="form-input">
+                    <div class="preview">
+                        <img src="" alt="" id="file-ip-1-preview">
+                    </div>
+                    <label for="" >Upload Image</label>
+                    <input type="file" name="image" id="file-ip-1" accept="image/*" onchange="showPreviewImg(event);">
+                </div>
+            </div>
 
         </div>
         <div class="space-y-2">
@@ -114,7 +127,7 @@
 
         </div>
     </form>
-            
+    </div>
 
 
 </x-app-layout>

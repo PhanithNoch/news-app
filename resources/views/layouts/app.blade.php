@@ -53,7 +53,7 @@
                 <!-- Page Heading -->
                 <header>
                     <div class="p-4 sm:p-6">
-                        {{ $header }}
+                        <!-- {{ $header }} -->
                     </div>
                 </header>
 
@@ -76,6 +76,29 @@
 </body>
 
 <script>    
+
+$('.show_confirm').click(function(){
+        var form = $(this).closest('form');
+        console.log(form);
+        var name = $(this).data('title');
+
+        event.preventDefault();
+        swal({
+            title: "Are you sure?",
+            text: "You want to delete this article",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                form.submit();
+            } else {
+                swal("Your article is safe!");
+            }
+        });
+       
+    });
 function showPreviewImg(event) {
     if (event.target.files.length > 0) {
         let src = URL.createObjectURL(event.target.files[0]);
@@ -84,6 +107,9 @@ function showPreviewImg(event) {
         preview.style.display = "block";
      
     }
+
+  
+    
 }
 
 </script>

@@ -51,4 +51,11 @@ class ArticleController extends Controller
         Article::create($form_data);
         return redirect()->route('article')->with('success', 'Article created successfully.');
     }
+
+    public function destroy($id){
+        $article = Article::find($id);
+        $article->delete();
+        toast('Article deleted successfully','success');
+        return redirect()->route('article')->with('success', 'Article deleted successfully.');
+    }
 }

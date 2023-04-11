@@ -38,12 +38,12 @@
       </td>
       <td>{{$article->created_at}}</td>
       <td>
-      <!-- <form action="{{ route('article.destroy',$article->id) }}" method="Post">
-                                <a class="btn btn-primary" href="{{ route('article.edit',$article->id) }}">Edit</a>
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form> -->
+     
+      <form action="{{route('article.destroy',$article->id)}}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger bg-danger show_confirm">Delete</button>
+      </form>
 
       </td>
     </tr>
